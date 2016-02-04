@@ -7,4 +7,6 @@ public interface WeaponStat {
     void weaponMaxDamage(int weaponMaxDamage);
 
     void attackSpeed(float attackSpeed);
+
+    void weaponType(WeaponTypes weaponType);
 }
