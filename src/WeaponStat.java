@@ -2,11 +2,11 @@
  * Created by Morten on 04-02-2016.
  */
 public interface WeaponStat {
-    void weaponMinDamage(int minDamage);
+    void weaponMinDamage(double minDamage);
 
-    void weaponMaxDamage(int weaponMaxDamage);
+    void weaponMaxDamage(double weaponMaxDamage);
 
-    void attackSpeed(float attackSpeed);
+    void attackSpeed(double attackSpeed);
 
     void weaponType(WeaponTypes weaponType);
 }
