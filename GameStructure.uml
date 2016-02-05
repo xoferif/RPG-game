@@ -2,12 +2,58 @@
 <Diagram>
   <ID>JAVA</ID>
   <OriginalElement />
-  <nodes />
+  <nodes>
+    <node x="217.0" y="543.0">Player</node>
+    <node x="395.0317164179105" y="-9.468283582089555">WeaponDamage</node>
+    <node x="117.0" y="352.0">Entities</node>
+    <node x="-7.0" y="0.0">WeaponStat</node>
+    <node x="177.0" y="639.0">Game</node>
+    <node x="0.0" y="167.0">Weapons</node>
+    <node x="0.0" y="543.0">Monster</node>
+    <node x="456.1660447761194" y="220.94402985074623">WeaponTypes</node>
+    <node x="180.5" y="718.0">map</node>
+  </nodes>
   <notes />
-  <edges />
-  <settings layout="Hierarchic Group" zoom="1.0" x="0.0" y="0.0" />
+  <edges>
+    <edge source="map" target="Game">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="Weapons" target="WeaponTypes">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Weapons" target="WeaponStat">
+      <point x="0.0" y="-70.0" />
+      <point x="0.0" y="58.5" />
+    </edge>
+    <edge source="Monster" target="Entities">
+      <point x="0.0" y="-25.5" />
+      <point x="98.5" y="518.0" />
+      <point x="160.5" y="518.0" />
+      <point x="-43.5" y="70.5" />
+    </edge>
+    <edge source="Player" target="Entities">
+      <point x="0.0" y="-25.5" />
+      <point x="309.5" y="518.0" />
+      <point x="247.5" y="518.0" />
+      <point x="43.5" y="70.5" />
+    </edge>
+    <edge source="Entities" target="Weapons">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8659127625201939" x="278.5009328358209" y="324.1194029850746" />
   <SelectedNodes />
-  <Categories />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
   <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
 </Diagram>
 
