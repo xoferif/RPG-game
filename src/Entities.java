@@ -3,38 +3,55 @@
  */
 public class Entities {
 
-    private Weapons weapon;
-    private int damage;
-    private int hitpoints;
+    private Damage weapon;
+    private int hitpoint;
     private int level = 1;
+    private double minDamage;
+    private double maxDamage;
+    private double attackSpeed;
+    private String name;
+    private String description;
 
-    public Entities(int hitpoints, Weapons weapon, int level){
-        this.hitpoints = hitpoints;
+    public Entities(String name, String description, int hitpoint, Damage weapon, int level) {
+        this.name = name;
+        this.description = description;
+        this.hitpoint = hitpoint;
         this.weapon = weapon;
         this.level = level;
     }
 
-    public void setWeapon(Weapons weapon) {
+    public void setWeapon(Damage weapon) {
         this.weapon = weapon;
+        this.minDamage = weapon.getMinDamage();
+        this.maxDamage = weapon.getMaxDamage();
+        this.attackSpeed = weapon.getAttackSpeed();
     }
 
-    public Weapons getWeapon() {
+    public Damage getWeapon() {
         return weapon;
     }
 
-    public void setDamage(int damage) {
-        this.damage = damage;
+    public double getMinDamage() {
+        return minDamage;
     }
 
-    public int getDamage() {
-        return damage;
+    public void setHitpoint(int hitpoint) {
+        this.hitpoint = hitpoint;
     }
 
-    public void setHitpoints(int hitpoints) {
-        this.hitpoints = hitpoints;
+    public int getHitpoint() {
+        return hitpoint;
     }
 
-    public int getHitpoints() {
-        return hitpoints;
+    public int getLevel() {
+        return level;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }

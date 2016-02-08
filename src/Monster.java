@@ -3,6 +3,6 @@
  */
 public class Monster extends Entities {
 
-    public Monster(int hitpoints, Weapons weapon, int level){
-        super(hitpoints, weapon, level);}
+    public Monster(String name, String description, int hitpoint, Damage weapon, int level){
+        super(name, description, hitpoint, weapon, level);}
 }

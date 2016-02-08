@@ -3,8 +3,8 @@
  */
 public class Player extends Entities {
 
-    public Player(int hitpoints, Weapons weapon, int level){
-        super(hitpoints, weapon, level);}
+    public Player(String name, String description, int hitpoint, Damage weapon, int level){
+        super(name, description, hitpoint, weapon, level);}
 
 
 }
