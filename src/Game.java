@@ -1,3 +1,7 @@
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 /**
  * Created by Morten on 04-02-2016.
  */
@@ -7,7 +11,12 @@ public class Game {
 
     public void play(){
         Room room = new Room();
-        room.createRooms();
+        Path folder = Paths.get(this.getClass().getClassLoader().getResource("").getPath() + "/Rooms/");
+        if (!Files.exists(folder)){
+            room.createRooms();
+        }
+
+
     }
 
     public static void main(String[] args){

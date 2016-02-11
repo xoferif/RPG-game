@@ -1,15 +1,13 @@
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by Morten on 09-02-2016.
  */
 public class IO {
-    public void Write(String string[], String path){
-
-
+    public void WriteToFile(String string[], String path){
         try{
             FileWriter fr = new FileWriter(path);
             BufferedWriter br = new BufferedWriter(fr);
@@ -22,12 +20,31 @@ public class IO {
                 br.newLine();
             }
             out.close();
-
-
         }
 
         catch(IOException e){
-            System.out.println(e);
+            print(e.toString());
         }
+    }
+    public List<String> readFromFile(String room){
+        List<String> roomList = new ArrayList<>();
+        String file = this.getClass().getClassLoader().getResource("").getPath() + "/Rooms/" + room;
+        try(BufferedReader br = new BufferedReader(new FileReader(file))) {
+            for(String line; (line = br.readLine()) != null; ) {
+                roomList.add(line);
+            }
+        }
+        catch (IOException iox){
+            print(iox.toString());
+        }
+        return roomList;
+    }
+    public void print(String string){
+        System.out.println(string);
+    }
+
+    public String scan(){
+        Scanner scan = new Scanner(System.in);
+        return scan.nextLine();
     }
 }

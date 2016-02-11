@@ -30,4 +30,6 @@ public class Damage {
     public double getMinDamage() {
         return minDamage;
     }
+
+
 }

@@ -1,6 +1,4 @@
 import java.io.*;
-import java.nio.charset.Charset;
-import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +25,6 @@ public class Room {
                 roomDir.mkdir();
             }
             catch(SecurityException se){
-
             }
 
         }
@@ -38,14 +35,16 @@ public class Room {
 
             roomContent = rooms.get(i).split(";");
             String roomNameAndPath = roomDir + "/Room" + (i + 1);
-            io.Write(roomContent,roomNameAndPath);
-
+            io.WriteToFile(roomContent,roomNameAndPath);
         }
     }
 
-    public void loadRoom(){
-        String mapPath = this.getClass().getClassLoader().getResource("").getPath() + "/Rooms/";
+    private List<String> loadRoom(String room){
+        return io.readFromFile(room);
+    }
 
+    public void movePlayer(String move){
+        List
     }
 
 }

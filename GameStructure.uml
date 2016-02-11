@@ -3,64 +3,97 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="36.49999999999997" y="838.5">Player</node>
-    <node x="248.3910256410256" y="682.0">IO</node>
-    <node x="208.72435897435895" y="0.0">WeaponDamage</node>
-    <node x="182.22435897435895" y="403.0">Entities</node>
-    <node x="75.64102564102555" y="995.0">Game</node>
-    <node x="459.39102564102564" y="682.0">Monster</node>
-    <node x="56.72435897435895" y="22.5">WeaponTypes</node>
-    <node x="94.97435897435895" y="212.0">Damage</node>
-    <node x="340.0833333333333" y="783.0">Room</node>
+    <node x="45.59895833333334" y="1206.5">Player</node>
+    <node x="470.25000000000006" y="984.0">IO</node>
+    <node x="152.0" y="0.0">WeaponDamage</node>
+    <node x="173.84895833333334" y="403.0">Attack</node>
+    <node x="74.34895833333334" y="682.0">Entities</node>
+    <node x="93.75000000000003" y="1363.0">Game</node>
+    <node x="184.25000000000006" y="1017.0">Monster</node>
+    <node x="0.0" y="22.5">WeaponTypes</node>
+    <node x="18.041666666666686" y="212.0">Damage</node>
+    <node x="451.75000000000006" y="1151.0">Room</node>
   </nodes>
   <notes />
   <edges>
     <edge source="Damage" target="WeaponDamage">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
-    </edge>
-    <edge source="Game" target="Damage">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
-    </edge>
-    <edge source="Entities" target="Damage">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="69.24999999999997" y="-70.5" />
+      <point x="225.79166666666666" y="187.0" />
+      <point x="287.5" y="187.0" />
+      <point x="0.0" y="81.0" />
     </edge>
     <edge source="Game" target="Room">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="60.0" y="-48.0" />
+      <point x="233.75000000000003" y="1343.0" />
+      <point x="540.75" y="1343.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+    <edge source="Entities" target="Damage">
+      <point x="-85.0" y="-126.0" />
+      <point x="159.34895833333334" y="657.0" />
+      <point x="163.34895833333334" y="657.0" />
+      <point x="163.34895833333334" y="378.0" />
+      <point x="156.54166666666669" y="378.0" />
+      <point x="0.0" y="70.5" />
+    </edge>
+    <edge source="Game" target="Damage">
+      <point x="-60.0" y="-48.0" />
+      <point x="113.75000000000003" y="1343.0" />
+      <point x="35.09895833333334" y="1343.0" />
+      <point x="35.09895833333334" y="378.0" />
+      <point x="64.20833333333337" y="378.0" />
+      <point x="-92.33333333333331" y="70.5" />
     </edge>
     <edge source="Game" target="Player">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="-20.0" y="-48.0" />
+      <point x="153.75000000000003" y="1333.0" />
+      <point x="109.09895833333334" y="1333.0" />
+      <point x="-63.5" y="25.5" />
     </edge>
     <edge source="Room" target="Monster">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="-59.33333333333337" y="-81.0" />
+      <point x="481.4166666666667" y="1126.0" />
+      <point x="317.25000000000006" y="1126.0" />
+      <point x="0.0" y="25.5" />
     </edge>
     <edge source="Monster" target="Entities">
       <point x="0.0" y="-25.5" />
-      <point x="592.3910256410256" y="657.0" />
-      <point x="422.22435897435895" y="657.0" />
-      <point x="80.0" y="114.5" />
+      <point x="317.25000000000006" y="959.0" />
+      <point x="329.34895833333337" y="959.0" />
+      <point x="85.0" y="126.0" />
     </edge>
     <edge source="Room" target="IO">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="59.33333333333337" y="-81.0" />
+      <point x="600.0833333333335" y="1126.0" />
+      <point x="681.75" y="1126.0" />
+      <point x="70.5" y="58.5" />
     </edge>
     <edge source="Player" target="Entities">
-      <point x="0.0" y="-25.5" />
-      <point x="163.49999999999997" y="657.0" />
-      <point x="262.22435897435895" y="657.0" />
-      <point x="-80.0" y="114.5" />
+      <point x="2.8421709430404007E-14" y="-25.5" />
+      <point x="172.59895833333334" y="959.0" />
+      <point x="159.34895833333334" y="959.0" />
+      <point x="-85.0" y="126.0" />
+    </edge>
+    <edge source="Attack" target="Damage">
+      <point x="0.0" y="-114.5" />
+      <point x="325.34895833333337" y="378.0" />
+      <point x="248.875" y="378.0" />
+      <point x="92.33333333333331" y="70.5" />
+    </edge>
+    <edge source="Entities" target="Attack">
+      <point x="85.0" y="-126.0" />
+      <point x="329.34895833333337" y="657.0" />
+      <point x="325.34895833333337" y="657.0" />
+      <point x="0.0" y="114.5" />
     </edge>
     <edge source="Damage" target="WeaponTypes">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
+      <point x="-69.25000000000003" y="-70.5" />
+      <point x="87.29166666666666" y="187.0" />
+      <point x="66.0" y="187.0" />
+      <point x="0.0" y="58.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.9896489648964896" x="343.4010914051843" y="725.8449295134152" />
+  <settings layout="Hierarchic Group" zoom="0.367816091954023" x="376.5" y="729.5" />
   <SelectedNodes />
   <Categories>
     <Category>Fields</Category>
