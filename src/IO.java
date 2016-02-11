@@ -5,8 +5,15 @@ import java.util.Scanner;
 
 /**
  * Created by Morten on 09-02-2016.
+ *
+ * Class used for various system commands.
  */
 public class IO {
+    /**
+     *
+     * @param string : Lines to write to file
+     * @param path : Absolute path to save file
+     */
     public void WriteToFile(String string[], String path){
         try{
             FileWriter fr = new FileWriter(path);
@@ -26,9 +33,15 @@ public class IO {
             print(e.toString());
         }
     }
-    public List<String> readFromFile(String room){
+
+    /**
+     *
+     * @param roomName : # defines room level etc 'room1'
+     * @return : List<String> Room details.
+     */
+    public List<String> readFromFile(String roomName){
         List<String> roomList = new ArrayList<>();
-        String file = this.getClass().getClassLoader().getResource("").getPath() + "/Rooms/" + room;
+        String file = this.getClass().getClassLoader().getResource("").getPath() + "/Rooms/" + roomName;
         try(BufferedReader br = new BufferedReader(new FileReader(file))) {
             for(String line; (line = br.readLine()) != null; ) {
                 roomList.add(line);
@@ -39,10 +52,19 @@ public class IO {
         }
         return roomList;
     }
+
+    /**
+     *
+     * @param string : Print string with System.out.println
+     */
     public void print(String string){
         System.out.println(string);
     }
 
+    /**
+     *
+     * @return <type>String</type>
+     */
     public String scan(){
         Scanner scan = new Scanner(System.in);
         return scan.nextLine();

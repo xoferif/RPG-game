@@ -7,11 +7,11 @@ import java.nio.file.Paths;
  */
 public class Game {
 
-    Player player = new Player("FirstComer", "A mere newcomer to textbased RPC games.", 50, new Damage(WeaponTypes.Hands), 1);
+    Player player = new Player("FirstComer", "A mere newcomer to textbased RPC games.", 50, new Damage(WeaponTypes.Hands), 1,10);
 
     public void play(){
         Room room = new Room();
-        Path folder = Paths.get(this.getClass().getClassLoader().getResource("").getPath() + "/Rooms/");
+        Path folder = Paths.get(this.getClass().getClassLoader().getResource("").getPath());
         if (!Files.exists(folder)){
             room.createRooms();
         }

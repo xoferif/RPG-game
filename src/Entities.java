@@ -1,26 +1,22 @@
-import java.util.function.ToIntFunction;
-
 /**
  * Created by Morten on 04-02-2016.
  */
 public class Entities {
 
     private Damage weapon;
-    private int hitpoint;
-    private int maxHitpoints;
-    private int level = 1;
-    private int numerOfPotions;
+    public int hitpoint;
+    public int maxHitpoints;
+    public int level = 1;
     private double minDamage;
     private double maxDamage;
     private double attackSpeed;
     private String name;
     private String description;
 
-    public Entities(String name, String description, int hitpoint, int numberOfPotions, Damage weapon, int level) {
+    public Entities(String name, String description, int hitpoint, Damage weapon, int level) {
         this.name = name;
         this.description = description;
         this.hitpoint = hitpoint;
-        this.numerOfPotions = numberOfPotions;
         this.weapon = weapon;
         this.level = level;
         this.maxHitpoints  = hitpoint + (level * 15);
@@ -87,15 +83,15 @@ public class Entities {
         }
     }
 
-    public void heal(){
-        if (numerOfPotions > 0){
-            Math.min(maxHitpoints,hitpoint + (maxHitpoints*0.3));
-        }
-    }
-
     public int attack(Monster monster, int attacktype){
         int attackDamage = (int)this.attackType(attacktype);
         monster.setHitpoint((monster.getHitpoint() > attackDamage) ? monster.getHitpoint() - attackDamage : 0);
+        return attackDamage;
+    }
+
+    public int attack(Player player, int attacktype) {
+        int attackDamage = (int) this.attackType(attacktype);
+        player.setHitpoint((player.getHitpoint() > attackDamage) ? player.getHitpoint() - attackDamage : 0);
         return attackDamage;
     }
 }

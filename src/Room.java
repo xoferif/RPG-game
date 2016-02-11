@@ -13,8 +13,8 @@ public class Room {
 
 
     public void createRooms(){
-        File roomDir = new File(this.getClass().getClassLoader().getResource("").getPath() + "/Rooms/");
-        rooms.add("##########;#        #;#   .    #;#        #;# #      #;#        #;#        #;#      ¤ #;#   #    #;##########");
+        File roomDir = new File(this.getClass().getClassLoader().getResource("").getPath() + "Rooms/");
+        rooms.add("##########;#x       #;#   .    #;#        #;# #      #;#        #;#        #;#      ¤ #;#   #    #;##########");
         rooms.add("##########;#        #;#     ¤  #;#        #;#        #;#  #     #;#        #;#        #;#  #     #;##########");
         rooms.add("##########;#        #;#        #;#        #;# #      #;#      # #;#        #;#  ¤     #;#        #;##########");
         rooms.add("##########;#        #;#        #;#    ¤   #;#        #;#  #     #;#        #;#        #;#        #;##########");
@@ -34,7 +34,7 @@ public class Room {
         {
 
             roomContent = rooms.get(i).split(";");
-            String roomNameAndPath = roomDir + "/Room" + (i + 1);
+            String roomNameAndPath = roomDir + "Room" + (i + 1);
             io.WriteToFile(roomContent,roomNameAndPath);
         }
     }
@@ -44,7 +44,7 @@ public class Room {
     }
 
     public void movePlayer(String move){
-        List
+
     }
 
 }
