@@ -7,9 +7,6 @@ public class Entities {
     public int hitpoint;
     public int maxHitpoints;
     public int level = 1;
-    private double minDamage;
-    private double maxDamage;
-    private double attackSpeed;
     private String name;
     private String description;
 
@@ -24,9 +21,6 @@ public class Entities {
 
     public void setWeapon(Damage weapon) {
         this.weapon = weapon;
-        this.minDamage = weapon.getMinDamage();
-        this.maxDamage = weapon.getMaxDamage();
-        this.attackSpeed = weapon.getAttackSpeed();
     }
 
     public Damage getWeapon() {
@@ -75,23 +69,7 @@ public class Entities {
     }
 
     public boolean alive(){
-        if (hitpoint < 0){
-            return false;
-        }
-        else{
-            return true;
-        }
+        return hitpoint > 0;
     }
 
-    public int attack(Monster monster, int attacktype){
-        int attackDamage = (int)this.attackType(attacktype);
-        monster.setHitpoint((monster.getHitpoint() > attackDamage) ? monster.getHitpoint() - attackDamage : 0);
-        return attackDamage;
-    }
-
-    public int attack(Player player, int attacktype) {
-        int attackDamage = (int) this.attackType(attacktype);
-        player.setHitpoint((player.getHitpoint() > attackDamage) ? player.getHitpoint() - attackDamage : 0);
-        return attackDamage;
-    }
 }

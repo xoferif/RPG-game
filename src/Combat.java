@@ -30,7 +30,7 @@ public class Combat {
      * @param player : object Player - used for attack and hitpoint manipulation
      */
     private void monsterAttack(Monster monster, Player player){
-        int AttackDmg = monster.attack(player, 1);
+        int AttackDmg = monster.attack(player);
 
         io.print(String.format("  " + player.getName() + " is hit for %d HP of damage (%s)\n", AttackDmg, player.status()));
 

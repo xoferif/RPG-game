@@ -36,12 +36,12 @@ public class IO {
 
     /**
      *
-     * @param roomName : # defines room level etc 'room1'
+     * @param Path : # defines room level etc 'room1'
      * @return : List<String> Room details.
      */
-    public List<String> readFromFile(String roomName){
+    public List<String> readFromFile(String Path){
         List<String> roomList = new ArrayList<>();
-        String file = this.getClass().getClassLoader().getResource("").getPath() + "/Rooms/" + roomName;
+        String file = Path;
         try(BufferedReader br = new BufferedReader(new FileReader(file))) {
             for(String line; (line = br.readLine()) != null; ) {
                 roomList.add(line);
