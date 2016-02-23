@@ -1,12 +1,9 @@
 import java.util.List;
-import java.util.Map;
-import java.util.Random;
 
 /**
  * Created by Morten on 04-02-2016.
  */
 public class Damage {
-    private WeaponTypes weaponType;
     private double minDamage;
     private double maxDamage;
     private double attackSpeed;
@@ -23,6 +20,7 @@ public class Damage {
     public double getAttackSpeed() {
         return attackSpeed;
     }
+
     public double getMaxDamage() {
         return maxDamage;
     }

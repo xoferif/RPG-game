@@ -1,9 +1,10 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
  * Created by Morten on 12-02-2016.
+ *
+ * Area class for holding all rooms together
  */
 public class Area {
     private List<Room> map = new ArrayList<>();
@@ -17,6 +18,10 @@ public class Area {
         return thisRoom.isLastRoom() && thisRoom.isComplete();
     }
 
+    /**
+     * Start the game here
+     * @param player Player object
+     */
     public void startQuest(Player player){
         while (player.alive() && !isComplete()){
             movePlayer(player);
@@ -46,7 +51,7 @@ public class Area {
         return area;
     }
 
-    private boolean allowedMove(int playerPosX, int playerPosY){
+    private boolean allowedMove(int playerPosX, int playerPosY, String direction){
         List<String> currentLocation = new ArrayList<>();
         if (firstRoom){
             currentLocation = thisRoom.loadRoom("room" + 1);
@@ -62,21 +67,21 @@ public class Area {
             }
             String currentY = currentLocation.get(i);
             CharSequence playerPos = "x";
-            int ii = currentY.indexOf("x")-1;
             if (currentY.contains(playerPos)){
-                if (!lastY.isEmpty() && !lastY.substring(currentY.indexOf("x"), currentY.indexOf("x")+1).equals("#"))
+                if (!lastY.isEmpty() && !lastY.substring(currentY.indexOf("x"), currentY.indexOf("x")+1).equals("#") && direction == "up")
                 {
                     return true;
                 }
-                else if(!nextY.isEmpty() && !nextY.substring(currentY.indexOf("x"), currentY.indexOf("x")+1).equals("#"))
+                else if(!nextY.isEmpty() && !nextY.substring(currentY.indexOf("x"), currentY.indexOf("x")+1).equals("#") && direction == "down")
                 {
                     return true;
                 }
-                else if(!currentY.substring(currentY.indexOf("x")+1, currentY.indexOf("x")+2).equals("#"))
+                else if(!currentY.substring(currentY.indexOf("x")+1, currentY.indexOf("x")+2).equals("#") && direction == "right")
                 {
                     return true;
                 }
-                else if(!currentY.substring(currentY.indexOf("x")-1, currentY.indexOf("x")).equals("#")){
+                else if(!currentY.substring(currentY.indexOf("x")-1, currentY.indexOf("x")).equals("#") && direction == "left")
+                {
                     return true;
                 }
             }
@@ -84,10 +89,11 @@ public class Area {
         return false;
     }
     private void movePlayer(Player player){
-        boolean upAllowed = allowedMove(playerPosX, playerPosY + 1);
-        boolean downAllowed = allowedMove(playerPosX, playerPosY - 1);
-        boolean rightAllowed = allowedMove(playerPosX + 1, playerPosY);
-        boolean leftAllowed = allowedMove(playerPosX - 1, playerPosY);
+
+        boolean upAllowed = allowedMove(player.getPlayerPosX(), playerPosY + 1, "up");
+        boolean downAllowed = allowedMove(playerPosX, playerPosY - 1,"down");
+        boolean rightAllowed = allowedMove(playerPosX + 1, playerPosY,"right");
+        boolean leftAllowed = allowedMove(playerPosX - 1, playerPosY,"left");
         io.print("Which way you want to go?");
         if (upAllowed){
             io.print("Up (w)");

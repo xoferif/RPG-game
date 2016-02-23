@@ -2,6 +2,8 @@
  * Created by Morten on 04-02-2016.
  */
 public class Player extends Entities {
+    private int playerPosX;
+    private int playerPosY;
     private int numberOfPotions;
     private IO io = new IO();
     public Player(String name, String description, int hitpoint, Damage weapon, int level, int numberOfPotions){
@@ -19,8 +21,24 @@ public class Player extends Entities {
         }
     }
 
+    public int getPlayerPosX() {
+        return playerPosX;
+    }
+
+    public int getPlayerPosY() {
+        return playerPosY;
+    }
+
+    public void setPlayerPosX(int playerPosX) {
+        this.playerPosX = playerPosX;
+    }
+
+    public void setPlayerPosY(int playerPosY) {
+        this.playerPosY = playerPosY;
+    }
+
     public int attack(Monster monster, int attacktype){
-        int attackDamage = (int)this.attackType(attacktype);
+        int attackDamage = (int)this.attackDamage(attacktype);
         monster.setHitpoint((monster.getHitpoint() > attackDamage) ? monster.getHitpoint() - attackDamage : 0);
         return attackDamage;
     }

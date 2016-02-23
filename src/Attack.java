@@ -1,5 +1,3 @@
-import java.util.List;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -18,7 +16,7 @@ public class Attack {
      * @param damage initialize damage getting min. and max dmg.
      * @param level initialize level for multiplier
      */
-    Attack(Damage damage, int level){
+    public Attack(Damage damage, int level){
         this.damage = damage;
         this.levelMultiplier += (level * 0.04)  ;
     }
@@ -63,7 +61,7 @@ public class Attack {
      */
     private double calculateDMG()
     {
-        double random = ThreadLocalRandom.current().nextDouble(damage.getMinDamage(), damage.getMaxDamage());
-        return random;
+        double randomDamage = ThreadLocalRandom.current().nextDouble(damage.getMinDamage(), damage.getMaxDamage());
+        return randomDamage;
     }
 }

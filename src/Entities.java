@@ -1,5 +1,6 @@
 /**
  * Created by Morten on 04-02-2016.
+ *
  */
 public class Entities {
 
@@ -10,6 +11,14 @@ public class Entities {
     private String name;
     private String description;
 
+    /**
+     *
+     * @param name String: Character name
+     * @param description String: Character description
+     * @param hitpoint Int: Character hitpoints
+     * @param weapon Damage: Damage object
+     * @param level Int: Character level
+     */
     public Entities(String name, String description, int hitpoint, Damage weapon, int level) {
         this.name = name;
         this.description = description;
@@ -47,7 +56,7 @@ public class Entities {
         return description;
     }
 
-    public double attackType(int attackType){
+    public double attackDamage(int attackType){
         Attack attack = new Attack(weapon,level);
         double damage = 0;
         switch (attackType){

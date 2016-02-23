@@ -14,7 +14,7 @@ public class Monster extends Entities {
 
     }
     public int attack(Player player) {
-        int attackDamage = (int) this.attackType(1);
+        int attackDamage = (int) this.attackDamage(1);
         player.setHitpoint((player.getHitpoint() > attackDamage) ? player.getHitpoint() - attackDamage : 0);
         return attackDamage;
     }
