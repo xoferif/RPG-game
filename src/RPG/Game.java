@@ -1,7 +1,11 @@
+package RPG;
+
 import java.io.File;
 
 /**
  * Created by Morten on 04-02-2016.
+ *
+ * Main file, which initializes game.
  */
 public class Game {
 

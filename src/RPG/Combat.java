@@ -1,17 +1,17 @@
-import java.io.IOException;
+package RPG;
 
 /**
  * Created by Morten on 11-02-2016.
  *
- * Combat class is used for fighting... FIGHT!
+ * RPG.Combat class is used for fighting... FIGHT!
  */
 public class Combat {
     IO io = new IO();
 
     /**
      *
-     * @param monster : object Monster - used for attack and hitpoint manipulation
-     * @param player : object Player - used for attack and hitpoint manipulation
+     * @param monster : object RPG.Monster - used for attack and hitpoint manipulation
+     * @param player : object RPG.Player - used for attack and hitpoint manipulation
      * @param attackOption : determines which attack to use
      */
     private void playerAttack(Monster monster, Player player, int attackOption){
@@ -26,8 +26,8 @@ public class Combat {
 
     /**
      *
-     * @param monster : object Monster - used for attack and hitpoint manipulation
-     * @param player : object Player - used for attack and hitpoint manipulation
+     * @param monster : object RPG.Monster - used for attack and hitpoint manipulation
+     * @param player : object RPG.Player - used for attack and hitpoint manipulation
      */
     private void monsterAttack(Monster monster, Player player){
         int AttackDmg = monster.attack(player);
@@ -41,8 +41,8 @@ public class Combat {
 
     /**
      *
-     * @param player : object Player - used for attack and hitpoint manipulation
-     * @param monster: object Monster - used for attack and hitpoint manipulation
+     * @param player : object RPG.Player - used for attack and hitpoint manipulation
+     * @param monster: object RPG.Monster - used for attack and hitpoint manipulation
      */
     public Combat(Player player, Monster monster) {
 
@@ -50,7 +50,7 @@ public class Combat {
         io.print("Battle with " + monster + " starts (" + player.status() + " / "
                 + monster.status() + ")");
         while (player.alive() && monster.alive()) {
-            io.print("Attack (a) or heal (h)? ");
+            io.print("RPG.Attack (a) or heal (h)? ");
             String action = io.scan();
             if (action.equals("h")) {
                 player.heal();
@@ -66,17 +66,17 @@ public class Combat {
                 // monster attacks first due to slowness
                 if (damage.getAttackSpeed() == 1.0)
                 {
-                    //Monster surprice attack!
+                    //RPG.Monster surprice attack!
                     monsterAttack(monster,player);
 
-                    //Player retaliates
+                    //RPG.Player retaliates
                     playerAttack(monster,player,Integer.parseInt(aAction));
                 }
                 else{
-                    // Player quickness FTW
+                    // RPG.Player quickness FTW
                     playerAttack(monster,player,Integer.parseInt(aAction));
 
-                    // Monster speed is slow compared to SUPER PLAYER!
+                    // RPG.Monster speed is slow compared to SUPER PLAYER!
                     monsterAttack(monster,player);
                 }
 

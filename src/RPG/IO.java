@@ -1,3 +1,5 @@
+package RPG;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +39,7 @@ public class IO {
     /**
      *
      * @param Path : # defines room level etc 'room1'
-     * @return : List<String> Room details.
+     * @return : List<String> RPG.Room details.
      */
     public List<String> readFromFile(String Path){
         List<String> roomList = new ArrayList<>();

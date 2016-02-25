@@ -1,3 +1,5 @@
+package RPG;
+
 import java.io.*;
 import java.util.*;
 
@@ -36,7 +38,7 @@ public class Room {
         {
 
             roomContent = rooms.get(i).split(";");
-            String roomNameAndPath = roomDir + "/Room" + (i + 1);
+            String roomNameAndPath = roomDir + "/RPG.Room" + (i + 1);
             io.WriteToFile(roomContent,roomNameAndPath);
         }
     }
@@ -106,7 +108,7 @@ public class Room {
         return !monster.alive();
     }
 
-    //public Room updateMap(int playerPosY,int playerPosX){
+    //public RPG.Room updateMap(int playerPosY,int playerPosX){
 
 
     //}

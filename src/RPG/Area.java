@@ -1,10 +1,12 @@
+package RPG;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Morten on 12-02-2016.
  *
- * Area class for holding all rooms together
+ * RPG.Area class for holding all rooms together
  */
 public class Area {
     private List<Room> map = new ArrayList<>();
@@ -20,7 +22,7 @@ public class Area {
 
     /**
      * Start the game here
-     * @param player Player object
+     * @param player RPG.Player object
      */
     public void startQuest(Player player){
         while (player.alive() && !isComplete()){

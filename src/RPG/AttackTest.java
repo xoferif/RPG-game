@@ -1,4 +1,5 @@
-import org.hamcrest.core.IsInstanceOf;
+package RPG;
+
 import org.junit.Before;
 import org.junit.Test;
 
