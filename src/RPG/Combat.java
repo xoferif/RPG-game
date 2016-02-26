@@ -62,9 +62,10 @@ public class Combat {
                 while (aAction != "1" || aAction != "2" || aAction != "3")
                     aAction = io.scan();
 
-                Damage damage = player.getWeapon();
+                Damage playerDmg = player.getWeapon();
+                Damage monsterDmg = monster.getWeapon();
                 // monster attacks first due to slowness
-                if (damage.getAttackSpeed() == 1.0)
+                if (monsterDmg.getAttackSpeed() > playerDmg.getAttackSpeed())
                 {
                     //RPG.Monster surprice attack!
                     monsterAttack(monster,player);

@@ -41,8 +41,7 @@ public class Area {
     public Area newInstance() {
         Room room = new Room();
         Area area = new Area();
-        Damage damage = new Damage(WeaponTypes.Hands);
-        Monster monster = new Monster("","",0, damage,0);
+        Monster monster = new Monster();
         area.map.add(room.newNormalRoom(monster));
         area.map.add(room.newNormalRoom(monster));
         area.map.add(room.newNormalRoom(monster));

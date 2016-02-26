@@ -27,6 +27,8 @@ public class Monster extends Entities {
 
     }
 
+    public Monster(){}
+
     /**
      *
      * @param player RPG.Player: RPG.Player object

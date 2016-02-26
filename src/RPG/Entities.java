@@ -4,7 +4,7 @@ package RPG;
  * Created by Morten on 04-02-2016.
  *
  */
-public class Entities {
+public abstract class Entities {
 
     private Damage weapon;
     public int hitpoint;
@@ -30,6 +30,7 @@ public class Entities {
         this.maxHitpoints  = hitpoint + (level * 15);
     }
 
+    public Entities(){}
     /**
      *
      * @param weapon RPG.Damage: set weapon and clarify damage.
