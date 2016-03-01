@@ -27,7 +27,7 @@ public abstract class Entities {
         this.hitpoint = hitpoint;
         this.weapon = weapon;
         this.level = level;
-        this.maxHitpoints  = hitpoint + (level * 15);
+        this.maxHitpoints  = hitpoint + ((level - 1) * 15);
     }
 
     public Entities(){}

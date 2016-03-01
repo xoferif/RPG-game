@@ -31,8 +31,8 @@ public class IO {
             out.close();
         }
 
-        catch(IOException e){
-            print(e.toString());
+        catch(Exception e){
+            e.printStackTrace();
         }
     }
 
@@ -49,8 +49,8 @@ public class IO {
                 roomList.add(line);
             }
         }
-        catch (IOException iox){
-            print(iox.toString());
+        catch (Exception e){
+            e.printStackTrace();
         }
         return roomList;
     }

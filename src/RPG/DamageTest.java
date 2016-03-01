@@ -12,18 +12,18 @@ public class DamageTest {
     @Test
     public void testGetAttackSpeed() throws Exception {
         Damage dmg = new Damage(WeaponTypes.Hands);
-        assertSame(Double.TYPE, dmg.getAttackSpeed());
+        assertTrue(1.0 == dmg.getAttackSpeed());
     }
 
     @Test
     public void testGetMaxDamage() throws Exception {
         Damage dmg = new Damage(WeaponTypes.Hands);
-        assertSame(Double.TYPE, dmg.getMaxDamage());
+        assertTrue(3.9== dmg.getMaxDamage());
     }
 
     @Test
     public void testGetMinDamage() throws Exception {
         Damage dmg = new Damage(WeaponTypes.Hands);
-        assertSame(Double.TYPE, dmg.getMinDamage());
+        assertTrue(1.0 == dmg.getMinDamage());
     }
 }

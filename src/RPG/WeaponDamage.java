@@ -15,7 +15,7 @@ public class WeaponDamage {
         damage.add(9.1);
     }
     private void flail(){
-        damage.add(1.4);
+        damage.add(1.5);
         damage.add(1.0);
         damage.add(14.4);
     }

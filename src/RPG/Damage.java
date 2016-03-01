@@ -13,9 +13,9 @@ public class Damage {
     Damage(WeaponTypes weapon){
         WeaponDamage wd = new WeaponDamage();
         List<Double> damage = wd.getSpeedAndDamage(weapon);
-        this.attackSpeed = damage.indexOf(0);
-        this.minDamage = damage.indexOf(1);
-        this.maxDamage = damage.indexOf(2);
+        this.attackSpeed = damage.get(0);
+        this.minDamage = damage.get(1);
+        this.maxDamage = damage.get(2);
 
     }
 
