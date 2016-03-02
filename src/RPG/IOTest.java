@@ -2,6 +2,7 @@ package RPG;
 
 import org.junit.Test;
 
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -17,23 +18,27 @@ public class IOTest {
     @Test
     public void testWriteToFile() throws Exception {
         IO io = new IO();
-        Path pathtofile = Paths.get("c:\\test.txt");
+        Path pathtofile = Paths.get("c:\\test\\test.txt");
         String[] writethis = {"some", "line"};
-        io.WriteToFile(writethis,pathtofile.toString());
+        File roomDir = new File("c:\\test");
+        io.WriteToFile(roomDir ,pathtofile.toString(), writethis);
         assertTrue(Files.exists(pathtofile));
         Files.delete(pathtofile);
+        roomDir.delete();
     }
 
     @Test
     public void testReadFromFile() throws Exception {
         IO io = new IO();
-        Path pathtofile = Paths.get("c:\\test.txt");
+        Path pathtofile = Paths.get("c:\\test\\test.txt");
         String[] writethis = {"some", "line"};
+        File roomDir = new File("c:\\test");
         List<String> fileContent;
-        io.WriteToFile(writethis,pathtofile.toString());
+        io.WriteToFile(roomDir ,pathtofile.toString(), writethis);
         fileContent = io.readFromFile(pathtofile.toString());
 
         assertTrue(fileContent.contains("some")&&fileContent.contains("line"));
         Files.delete(pathtofile);
+        roomDir.delete();
     }
 }

@@ -24,14 +24,6 @@ public class Room {
         rooms.add("##########;#        #;#        #;#    ¤   #;#        #;#  #     #;#        #;#        #;#        #;##########");
         rooms.add("##########;#        #;#        #;#    #   #;#        #;#        #;#  #     #;#        #;# ¤      #;##########");
         rooms.add("##########;#       ¤#;##       #;#        #;#    #   #;#        #;#        #;#        #;#        #;##########");
-        if (!roomDir.exists()){
-            try{
-                roomDir.mkdir();
-            }
-            catch(SecurityException se){
-            }
-
-        }
         String[] roomContent;
 
         for (int i = 0; i < rooms.size(); i++)
@@ -39,7 +31,7 @@ public class Room {
 
             roomContent = rooms.get(i).split(";");
             String roomNameAndPath = roomDir + "/RPG.Room" + (i + 1);
-            io.WriteToFile(roomContent,roomNameAndPath);
+            io.WriteToFile(roomDir,roomNameAndPath,roomContent);
         }
     }
 
@@ -82,7 +74,7 @@ public class Room {
             roomDescription = "A mystical forrest with horrifying sound from all sides ";
         }
         else if (i == 3) {
-            roomDescription = "A Misty svamp, with almost no visibility";
+            roomDescription = "A Misty swamp, with almost no visibility";
         }
         else if (i == 4) {
             roomDescription = "An empty castle, all movements are overseen from the dark";
@@ -108,9 +100,6 @@ public class Room {
         return !monster.alive();
     }
 
-    //public RPG.Room updateMap(int playerPosY,int playerPosX){
 
-
-    //}
 
 }

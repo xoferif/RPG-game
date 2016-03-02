@@ -11,12 +11,21 @@ import java.util.Scanner;
  * Class used for various system commands.
  */
 public class IO {
+
     /**
      *
+     * @param roomDir : Folder path
+     * @param path : Absolute filepath to save file
      * @param string : Lines to write to file
-     * @param path : Absolute path to save file
      */
-    public void WriteToFile(String string[], String path){
+    public void WriteToFile(File roomDir, String path, String string[]){
+        if (!roomDir.exists()){
+            try{
+                roomDir.mkdirs();
+            }
+            catch(SecurityException se){
+            }
+        }
         try{
             FileWriter fr = new FileWriter(path);
             BufferedWriter br = new BufferedWriter(fr);
