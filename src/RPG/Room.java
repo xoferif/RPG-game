@@ -9,6 +9,7 @@ import java.util.*;
 public class Room {
     IO io = new IO();
     private List<String> rooms = new ArrayList<>();
+    private List<String> room = new ArrayList<>();
     private boolean isLastRoom;
     private String description;
     private Monster monster;
@@ -35,10 +36,11 @@ public class Room {
         }
     }
 
-    private Room(String description, Monster monster, Boolean isLastRoom) {
+    private Room(String description, Monster monster, Boolean isLastRoom, List<String> room) {
         this.description = description;
         this.monster = monster;
         this.isLastRoom = isLastRoom;
+        this.room = room;
     }
 
     public Room() {
@@ -52,7 +54,14 @@ public class Room {
     public boolean isLastRoom(){
         return isLastRoom;
     }
-
+    public String getDescription(){return description;}
+    public List<String> getRoom() {return room;}
+    public void setRoom(List<String> room){
+        this.room = room;
+    }
+    public Room firstRoom(Monster monster) {
+        return new Room("A mist cellar with a funky smell", monster.newRandomInstance(), false, loadRoom("room1"));
+    }
     public Room newNormalRoom(Monster monster) {
         if (roomVisited.size() == numberOfRooms) {
             roomVisited.clear();
@@ -62,10 +71,11 @@ public class Room {
             i = random.nextInt(numberOfRooms);
         } while (roomVisited.contains(i));
         roomVisited.add(i);
-
+        room = loadRoom("room"+(i+1));
         String roomDescription = null;
         if (i == 0) {
             roomDescription = "A mist cellar with a funky smell";
+
         }
         else if (i == 1) {
             roomDescription = "A dark cave with crushed bones as floor";
@@ -88,12 +98,11 @@ public class Room {
         else {
             roomDescription = "Seems to be an empty hallway";
         }
-        return new Room(roomDescription, monster.newRandomInstance(), false);
+        return new Room(roomDescription, monster.newRandomInstance(), false, room);
     }
 
     public Room LastRoom(Monster monster) {
-        return new Room("a huge cavern thick with the smell of death", monster.lastInstance(),
-                true);
+        return new Room("a huge cavern thick with the smell of death", monster.lastInstance(), true, loadRoom("room1"));
     }
 
     public boolean isComplete() {

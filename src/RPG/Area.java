@@ -1,6 +1,7 @@
 package RPG;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -12,8 +13,6 @@ public class Area {
     private List<Room> map = new ArrayList<>();
     private Room thisRoom;
     private boolean firstRoom = true;
-    private int playerPosX;
-    private int playerPosY;
     private IO io = new IO();
 
     private boolean isComplete(){
@@ -42,7 +41,7 @@ public class Area {
         Room room = new Room();
         Area area = new Area();
         Monster monster = new Monster();
-        area.map.add(room.newNormalRoom(monster));
+        area.map.add(room.firstRoom(monster));
         area.map.add(room.newNormalRoom(monster));
         area.map.add(room.newNormalRoom(monster));
         area.map.add(room.newNormalRoom(monster));
@@ -52,21 +51,31 @@ public class Area {
         return area;
     }
 
-    private boolean allowedMove(int playerPosX, int playerPosY, String direction){
-        List<String> currentLocation = new ArrayList<>();
-        if (firstRoom){
-            currentLocation = thisRoom.loadRoom("room" + 1);
+    private Player currentPlayerlocation(List<String> currentRoom, Player player){
+        String playerLocation = "";
+        for (int i = 0; i < currentRoom.size();i++){
+            CharSequence playerPos = "x";
+            String currentY = currentRoom.get(i);
+            if (currentY.contains(playerPos)){
+                player.setPlayerPosX(currentY.indexOf('x'));
+                player.setPlayerPosY(i);
+            }
+
         }
-        for (int i = 0; i < currentLocation.size();i++){
+        return player;
+    }
+
+    private boolean allowedMove(List<String> currentRoom, String direction){
+        for (int i = 0; i < currentRoom.size();i++){
             String lastY = "";
             String nextY = "";
             if (1 < i){
-                lastY = currentLocation.get(i-1);
+                lastY = currentRoom.get(i-1);
             }
-            if (i < currentLocation.size()-1){
-                nextY = currentLocation.get(i+1);
+            if (i < currentRoom.size()-1){
+                nextY = currentRoom.get(i+1);
             }
-            String currentY = currentLocation.get(i);
+            String currentY = currentRoom.get(i);
             CharSequence playerPos = "x";
             if (currentY.contains(playerPos)){
                 if (!lastY.isEmpty() && !lastY.substring(currentY.indexOf("x"), currentY.indexOf("x")+1).equals("#") && direction == "up")
@@ -89,12 +98,72 @@ public class Area {
         }
         return false;
     }
-    private void movePlayer(Player player){
 
-        boolean upAllowed = allowedMove(player.getPlayerPosX(), playerPosY + 1, "up");
-        boolean downAllowed = allowedMove(playerPosX, playerPosY - 1,"down");
-        boolean rightAllowed = allowedMove(playerPosX + 1, playerPosY,"right");
-        boolean leftAllowed = allowedMove(playerPosX - 1, playerPosY,"left");
+    private List<String> updateRoom(List<String> room, String direction){
+        for (int i = 0; i < room.size();i++){
+            String lastY = "";
+            String nextY = "";
+            if (1 < i){
+                lastY = room.get(i-1);
+            }
+            if (i < room.size()-1){
+                nextY = room.get(i+1);
+            }
+            CharSequence playerPos = "x";
+
+
+            if (direction == "up"){
+                if (room.get(i).contains(playerPos)){
+                    int pos = room.get(i).indexOf('x');
+                    StringBuilder newY = new StringBuilder(lastY);
+                    newY.setCharAt(pos,'x');
+                    room.set(i-1,newY.toString());
+                    room.set(i,room.get(i).replace('x',' '));
+                    return room;
+                }
+            }
+            else if (direction == "down"){
+                if (room.get(i).contains(playerPos)){
+                    int pos = room.get(i).indexOf('x');
+                    StringBuilder newY = new StringBuilder(nextY);
+                    newY.setCharAt(pos,'x');
+                    room.set(i+1,newY.toString());
+                    room.set(i,room.get(i).replace('x',' '));
+                    return room;
+                }
+            }
+            else if(direction == "right"){
+                if (room.get(i).contains(playerPos)) {
+                    int pos = room.get(i).indexOf('x');
+                    StringBuilder newY = new StringBuilder(room.get(i));
+                    newY.replace(pos, pos + 2, " x");
+                    room.set(i, newY.toString());
+                    return room;
+                }
+            }
+            else if (direction == "left"){
+                if (room.get(i).contains(playerPos)){
+                    int pos = room.get(i).indexOf('x');
+                    StringBuilder newY = new StringBuilder(room.get(i));
+                    newY.replace(pos-1, pos+1,"x ");
+                    room.set(i, newY.toString());
+                    return room;
+                }
+            }
+
+        }
+        return room;
+    }
+    private void movePlayer(Player player){
+        List<String> currentRoom = new ArrayList<>(thisRoom.getRoom());
+        io.print(thisRoom.getDescription());
+        boolean upAllowed = allowedMove(currentRoom, "up");
+        boolean downAllowed = allowedMove(currentRoom,"down");
+        boolean rightAllowed = allowedMove(currentRoom,"right");
+        boolean leftAllowed = allowedMove(currentRoom,"left");
+        for (int i = 0; i < currentRoom.size();i++){
+            io.print(currentRoom.get(i));
+        }
         io.print("Which way you want to go?");
         if (upAllowed){
             io.print("Up (w)");
@@ -111,16 +180,20 @@ public class Area {
 
         String move = io.scan();
         if (move.equals("w") && upAllowed){
-            playerPosY++;
+            player.setPlayerPosX(player.getPlayerPosX()+1);
+            thisRoom.setRoom(updateRoom(currentRoom,"up"));
         }
         if (move.equals("s") && downAllowed){
-            playerPosY--;
+            player.setPlayerPosX(player.getPlayerPosX()-1);
+            thisRoom.setRoom(updateRoom(currentRoom,"down"));
         }
         if (move.equals("d") && rightAllowed){
-            playerPosX++;
+            player.setPlayerPosY(player.getPlayerPosY()+1);
+            thisRoom.setRoom(updateRoom(currentRoom,"right"));
         }
         if (move.equals("a") && leftAllowed){
-            playerPosX--;
+            player.setPlayerPosY(player.getPlayerPosY()-1);
+            thisRoom.setRoom(updateRoom(currentRoom,"left"));
         }
 
     }
