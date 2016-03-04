@@ -14,7 +14,7 @@ public class Area {
     private Room thisRoom;
     private boolean firstRoom = true;
     private IO io = new IO();
-
+    private Game game;
     private boolean isComplete(){
         return thisRoom.isLastRoom() && thisRoom.isComplete();
     }
@@ -23,7 +23,8 @@ public class Area {
      * Start the game here
      * @param player RPG.Player object
      */
-    public void startQuest(Player player){
+    public void startQuest(Player player,Game game){
+        this.game = game;
         while (player.alive() && !isComplete()){
             movePlayer(player);
         }
@@ -52,7 +53,6 @@ public class Area {
     }
 
     private Player currentPlayerlocation(List<String> currentRoom, Player player){
-        String playerLocation = "";
         for (int i = 0; i < currentRoom.size();i++){
             CharSequence playerPos = "x";
             String currentY = currentRoom.get(i);
@@ -156,6 +156,7 @@ public class Area {
     }
     private void movePlayer(Player player){
         List<String> currentRoom = new ArrayList<>(thisRoom.getRoom());
+        player = currentPlayerlocation(currentRoom, player);
         io.print(thisRoom.getDescription());
         boolean upAllowed = allowedMove(currentRoom, "up");
         boolean downAllowed = allowedMove(currentRoom,"down");
@@ -177,23 +178,43 @@ public class Area {
         if (leftAllowed){
             io.print("Left (a)");
         }
-
-        String move = io.scan();
-        if (move.equals("w") && upAllowed){
+        io.print("Save to xml (o)\nLoad from xml (p)");
+        io.print("Save to sql (k)\nLoad from sql (l)");
+        String action = io.scan();
+        if (action.equals("w") && upAllowed){
             player.setPlayerPosX(player.getPlayerPosX()+1);
             thisRoom.setRoom(updateRoom(currentRoom,"up"));
         }
-        if (move.equals("s") && downAllowed){
+        if (action.equals("s") && downAllowed){
             player.setPlayerPosX(player.getPlayerPosX()-1);
             thisRoom.setRoom(updateRoom(currentRoom,"down"));
         }
-        if (move.equals("d") && rightAllowed){
+        if (action.equals("d") && rightAllowed){
             player.setPlayerPosY(player.getPlayerPosY()+1);
             thisRoom.setRoom(updateRoom(currentRoom,"right"));
         }
-        if (move.equals("a") && leftAllowed){
+        if (action.equals("a") && leftAllowed){
             player.setPlayerPosY(player.getPlayerPosY()-1);
             thisRoom.setRoom(updateRoom(currentRoom,"left"));
+        }
+        for (int i = 0; i < 20;i++){
+            io.print("\n");
+        }
+        if (action.equals("o")){
+            XmlParser xml = new XmlParser();
+            xml.XMLWriter(game);
+        }
+        if (action.equals("p")){
+            XmlParser xml = new XmlParser();
+            xml.XMLReader();
+        }
+        if (action.equals("k")){
+            SqlHandler sql = new SqlHandler();
+            sql.insertintoDB(game);
+        }
+        if (action.equals("l")){
+            SqlHandler sql = new SqlHandler();
+            sql.retrieveFromdB();
         }
 
     }
